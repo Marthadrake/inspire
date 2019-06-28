@@ -1,11 +1,11 @@
-// export default class Todo {
-//   constructor(data) {
-//     this.name = data.name || ''
-//     this.description = data.description || ''
-//   }
-// }
+export default class Todo {
+  constructor(data) {
+    this.name = data.name || ''
+    this.description = data.description || ''
+  }
+}
 
-// get Template(){
-//   return `
+get Template(){
+  return `
 
-// }
+}
