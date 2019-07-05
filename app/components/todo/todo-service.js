@@ -10,6 +10,7 @@ let _state = {
 	todos: [],
 	error: {},
 }
+
 let _subscribers = {
 	todos: [],
 	error: []
@@ -21,6 +22,9 @@ function _setState(prop, data) {
 }
 
 export default class TodoService {
+	static forEach(arg0) {
+		throw new Error("Method not implemented.");
+	}
 	get TodoError() {
 		return _state.error
 	}
@@ -29,13 +33,23 @@ export default class TodoService {
 		_subscribers[prop].push(fn)
 	}
 
+	get Todos() {
+		return _state
+	}
+	debugger
+
+	set Todos(val) {
+		_state = val
+		_subscribers.forEach(fn => fn())
+	}
 	getTodos() {
-		console.log("Getting the Todo List")
-		todoApi.get()
+		todoApi.get('')
 			.then(res => {
 				_setState('', res.data)
 				// WHAT DO YOU DO WITH THE RESPONSE?
-				console.log("all todos", res.data)
+				this.Todos = res.data.data
+				console.log(res.data)
+
 			})
 			.catch(err => _setState('error', err.response.data))
 	}
@@ -70,12 +84,14 @@ export default class TodoService {
 		todoApi.delete(todoId)
 			.then(res => {
 				console.log(res.data)
-				this.getTodos(
+				this.getTodos()
 
-				)
-			}
-		.catch (err => console.error(err))
+			})
+			.catch(err => _setState('error', err.response.data))
+
+		// .catch (err => console.error(err))
 		// The http method is delete at the todoId
-	}
 
+
+	}
 }
