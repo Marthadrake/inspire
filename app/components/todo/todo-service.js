@@ -38,7 +38,6 @@ export default class TodoService {
 	addTodo(todo) {
 		todoApi.post('', todo)
 			.then(res => {
-				debugger
 				console.log(res.data)
 				this.getTodo()
 			})
