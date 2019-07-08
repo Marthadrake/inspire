@@ -10,8 +10,6 @@ export default class Todo {
     return `
     <div class="col-4">
       <button class="btn btn-primary" onclick="app.controllers.TodoController.removeTodo('${this._id}')" > Delete</button >
-      <h4>Completed: ${this.completed}</h4>
-      <h4>User: ${this.user}</h4>
       <h4>Description: ${this.description}</h4>
     </div>
     `
