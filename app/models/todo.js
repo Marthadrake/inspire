@@ -15,14 +15,5 @@ export default class Todo {
       <div class ="card-body">
         <img src=${this.imageUrl} alt="todo List class="card-img-top"</>
 
-			  <h4> description: ${this.description}</h4>
-      </div>
-      <div class="card-center">
-	    <button onclick="app.controllers.todoConttoller.todoo('${this._id}')" class="btn btn-success">Todo List</button>
-	    <button onclick="app.controllers.todoConttoller.todoo('${this._id}')" class="btn btn-primary">Clear Todo</button>
-      </div>
-      </div>
-    </div>
-`
   }
 }

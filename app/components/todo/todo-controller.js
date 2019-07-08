@@ -19,14 +19,6 @@ function _drawError() {
 	document.querySelector('#todo-error').textContent = `${_todoService.TodoError}`
 }
 
-// function _drawToggleTodoStatus() {
-// 	console.log("bring-up daily todo", _drawToggleTodoStatus)
-// }
-
-// function _drawRemoveTodo() {
-// 	console.log("finished todo list", _drawRemoveTodo)
-// }
-
 
 export default class TodoController {
 	constructor() {
@@ -40,7 +32,6 @@ export default class TodoController {
 			// _todoService.removeTodo()
 
 			// Don't forget to add your subscriber
-			console.log("todo list")
 	}
 
 	addTodo(e) {
