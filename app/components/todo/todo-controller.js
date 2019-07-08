@@ -4,24 +4,25 @@ let _todoService = new TodoService()
 
 
 function _drawTodos() {
+	debugger
 	// What is my purpose?
-	let todosElem = document.querySelector("#api-todos");
+	let todosElem = document.querySelector("#todos");
 	let todos = _todoService.Todo;
 	let template = '';
-	todos.forEach(todo => template += `<li> <button type="button class="btn btn-primary btn-sm" onclick="app.contollers.todoController.getTodo('${todo.url}')".${todo.name}</button></li>`)
+	todos.forEach(todo => template += todo.template)
 	todosElem.innerHTML = template
 }
 
-function _drawError() {
-	console.error('[TODO ERROR]', _todoService.TodoError)
-	document.querySelector('#todo-error').textContent = `${_todoService.TodoError}`
-}
+// function _drawError() {
+// 	console.error('[TODO ERROR]', _todoService.TodoError)
+// 	document.querySelector('#todo-error').textContent = `${_todoService.TodoError}`
+// }
 
 
 export default class TodoController {
 	constructor() {
 
-		_todoService.addSubscriber('error', _drawError)
+		// _todoService.addSubscriber('error', _drawError)
 		_todoService.addSubscriber('todos', _drawTodos)
 		_todoService.getTodo();
 		// Don't forget to add your subscriber
@@ -30,9 +31,11 @@ export default class TodoController {
 	addTodo(e) {
 		e.preventDefault()
 		let form = e.target
-		let description = form.newTodo.value
-		_todoService.addTodo({ description })
-		form.rest()
+		let newTodo = {
+			description: form.description.value
+		}
+		_todoService.addTodo(newTodo)
+		form.reset()
 
 	}
 

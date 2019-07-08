@@ -31,10 +31,10 @@
 
 	<div style="text-align: center">
 		<div id="todo-error"></div>
-		<form onsubmit="app.components.todoController.addTodo(event)" class="w3-card">
+		<form onsubmit="app.controllers.TodoController.addTodo(event)">
 			<div id="todos"></div>
-			<input type="text" name="newTodo" placeholder="NewTodo">
-			<button type="submit"><a class="card">A Todo List</a></button>
+			<input type="text" name="description" placeholder="New Todo">
+			<button type="submit">Add Todo</button>
 		</form>
 	</div>
 

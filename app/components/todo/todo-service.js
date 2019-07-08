@@ -31,25 +31,27 @@ export default class TodoService {
 				console.log(res.data.message)
 				this.getTodo()
 			})
-			.catch(err => _setState('error', err.response.data))
+			.catch(err => _setState('error', err))
 		// The http method is delete at the todoId
 	}
 
 	addTodo(todo) {
 		todoApi.post('', todo)
 			.then(res => {
+				debugger
 				console.log(res.data)
+				this.getTodo()
 			})
-			.catch(err => _setState('error', err.response.data))
+			.catch(err => _setState('error', err))
 	}
 
 	getTodo() {
 		todoApi.get()
 			.then(res => {
 				console.log(res.data.data)
-				_setState('todo', res.data.results)
+				_setState('todos', res.data.data)
 			})
-			.catch(err => _setState('error', err.response.data))
+			.catch(err => _setState('error', err))
 	}
 
 	addSubscriber(prop, fn) {
@@ -57,7 +59,7 @@ export default class TodoService {
 	}
 
 	get Todo() {
-		return _state.todos.map(error => new Todo(error))
+		return _state.todos.map(t => new Todo(t))
 	}
 	get TodoError() {
 		return _state.error
@@ -65,6 +67,7 @@ export default class TodoService {
 
 	toggleTodoStatus(todoId) {
 		let todo = _state.todos.find(todo => todo._id == todoId)
+		todo.completed = !todo.completed
 		// Be sure to change the completed property to its opposite
 		// todo.completed = !todo.completed <-- THIS FLIPS A BOOL
 
@@ -73,6 +76,6 @@ export default class TodoService {
 				console.log("todo", res.data)
 				_setState("todo", res.data)
 			})
-			.catch(err => _setState('error', err.response.data))
+			.catch(err => _setState('error', err))
 	}
 }
