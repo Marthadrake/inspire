@@ -22,28 +22,45 @@ function _setState(prop, data) {
 }
 
 export default class TodoService {
-	get TodoError() {
-		return _state.error
+	getTodosError() {
+		throw new Error("Method not implemented.");
+	}
+	removeTodo(todoId) {
+		todoApi.delete(todoId)
+			.then(res => {
+				console.log(res.data.message)
+				this.getTodo()
+			})
+			.catch(err => _setState('error', err.response.data))
+		// The http method is delete at the todoId
+	}
+
+	addTodo(todo) {
+		todoApi.post('', todo)
+			.then(res => {
+				console.log(res.data)
+			})
+			.catch(err => _setState('error', err.response.data))
+	}
+
+	getTodo() {
+		todoApi.get()
+			.then(res => {
+				console.log(res.data.data)
+				_setState('todo', res.data.results)
+			})
+			.catch(err => _setState('error', err.response.data))
 	}
 
 	addSubscriber(prop, fn) {
 		_subscribers[prop].push(fn)
 	}
 
-	getTodos() {
-		todoApi.get('')
-			.then(res => {
-				// WHAT DO YOU DO WITH THE RESPONSE?
-			})
-			.catch(err => _setState('error', err.response.data))
-
-	addTodo(todo) {
-		todoApi.post('', todo)
-			.then(res => {
-				// WHAT DO YOU DO AFTER CREATING A NEW TODO?
-				console.log("added todos", res.data)
-			})
-			.catch(err => _setState('error', err.response.data))
+	get Todo() {
+		return _state.todos.map(error => new Todo(error))
+	}
+	get TodoError() {
+		return _state.error
 	}
 
 	toggleTodoStatus(todoId) {

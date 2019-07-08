@@ -5,12 +5,10 @@ let _todoService = new TodoService()
 
 function _drawTodos() {
 	// What is my purpose?
-	let todosElem = document.querySelector("#todo")
-	let template = ''
-	let todos = _todoService.Todos
-	todos.forEach(todo => {
-		template += todo.Template
-	})
+	let todosElem = document.querySelector("#api-todos");
+	let todos = _todoService.Todo;
+	let template = '';
+	todos.forEach(todo => template += `<li> <button type="button class="btn btn-primary btn-sm" onclick="app.contollers.todoController.getTodo('${todo.url}')".${todo.name}</button></li>`)
 	todosElem.innerHTML = template
 }
 
@@ -24,24 +22,17 @@ export default class TodoController {
 	constructor() {
 
 		_todoService.addSubscriber('error', _drawError)
-		// _todoService.addSubscriber("todos", _drawTodos),
-		// _todoService.addSubscriber("toggleTodoStatus", _drawToggleTodoStatus),
-		// _todoService.addSubscriber("removeTodo", _drawRemoveTodo),
-		_todoService.getTodos(),
-			// _todoService.toggleTodoStatus(),
-			// _todoService.removeTodo()
-
-			// Don't forget to add your subscriber
+		_todoService.addSubscriber('todos', _drawTodos)
+		_todoService.getTodo();
+		// Don't forget to add your subscriber
 	}
 
 	addTodo(e) {
 		e.preventDefault()
 		let form = e.target
-		let todo = {
-			// dont forget to build your todo Object
-		}
-
-		_todoService.addTodo(todo)
+		let description = form.newTodo.value
+		_todoService.addTodo({ description })
+		form.rest()
 
 	}
 

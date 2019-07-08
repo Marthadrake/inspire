@@ -13,30 +13,32 @@
 
 <body id="bg-image">
 	<div id="weather">
-		Your Weather Template
+
 		<p>
-			<button><label>Fahrenheit</label>
+			<button>Your Weather<label>Fahrenheit</label>
 				<input id="inputFahrenheit" type="number" placeholder="Fahrenheit" oninput="temperatureConverter(this.value)"
 					onchange="temperatureConverter(this.value)">
 		</p>
 		<p>Celsius: <span id="outputCelsius"></span></p>
+		</button>
 
 	</div>
 
-	<div id="quote">
-		<button><a href="https://www.brainyquote.com/quote_of_the_day">
+	<div id="quote" class="card">
+		<button><a class="card" href="https://www.brainyquote.com/quote_of_the_day">
 				The Quote of the Day</a></button>
 	</div>
 
-	<div>
+	<div style="text-align: center">
 		<div id="todo-error"></div>
-		<form onsubmit="app.components.TodoController.(event)">
+		<form onsubmit="app.components.todoController.addTodo(event)" class="w3-card">
 			<div id="todos"></div>
-			<input type="text" name="newTodo">
-			<button type"submit">A Todo List</button>
+			<input type="text" name="newTodo" placeholder="NewTodo">
+			<button type="submit"><a class="card">A Todo List</a></button>
 		</form>
 	</div>
 
+	<script scr="www.brainyquote.com/link/quotebr.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 	<script type="module" src="app/main.js"></script>
 </body>
