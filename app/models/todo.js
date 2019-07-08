@@ -7,11 +7,17 @@ export default class Todo {
   }
 
   get template() {
+
+    //TODO add a button to toggle the status of the todo (IE., if it's complete or not) dont forget to pass the id
     return `
-    <div class="col-4">
-      <button class="btn btn-primary" onclick="app.controllers.TodoController.removeTodo('${this._id}')" > Delete</button >
-      <h4>Description: ${this.description}</h4>
+
+    <div>
+    <h5>Todo: ${this.description}</h5>
+    <button class="btn btn-primary btn-sm" onclick="app.controllers.TodoController.removeTodo('${this._id}')" >Deleted</button >
+  <input type="checkbox-sm"/><label class="strikethrough">completed</label></button>
     </div>
-    `
+      `
   }
+  // <h4>Completed: ${this.completed}</h4>
+  // <h4>User: ${this.user}</h4>
 }

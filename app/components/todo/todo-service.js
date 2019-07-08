@@ -2,7 +2,7 @@ import Todo from "../../models/todo.js";
 
 // @ts-ignore
 const todoApi = axios.create({
-	baseURL: 'https://bcw-sandbox.herokuapp.com/api/martha/todos/',
+	baseURL: 'https://bcw-sandbox.herokuapp.com/api/martha/todos/', //NOTE your name is only needed in this axios instance and nowhere else
 	timeout: 3000
 });
 
@@ -67,6 +67,7 @@ export default class TodoService {
 	toggleTodoStatus(todoId) {
 		let todo = _state.todos.find(todo => todo._id == todoId)
 		todo.completed = !todo.completed
+
 		// Be sure to change the completed property to its opposite
 		// todo.completed = !todo.completed <-- THIS FLIPS A BOOL
 
