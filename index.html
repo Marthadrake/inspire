@@ -11,32 +11,47 @@
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body id="bg-image">
-	<div id="weather">
-
-		<p>
-			<button>Your Weather<label>Fahrenheit</label>
-				<input id="inputFahrenheit" type="number" placeholder="Fahrenheit" oninput="temperatureConverter(this.value)"
-					onchange="temperatureConverter(this.value)">
-		</p>
-		<p>Celsius: <span id="outputCelsius"></span></p>
-		</button>
-
-	</div>
+<nav>
 
 	<div id="quote" class="card">
-		<button><a class="card" href="https://www.brainyquote.com/quote_of_the_day">
-				The Quote of the Day</a></button>
+		<button>The Quote of the Day</a></button>
+	</div>
+</nav>
+
+<body>
+
+	<div id="bg-image" class="text-center">
+
 	</div>
 
-	<div style="text-align: center">
-		<div id="todo-error"></div>
-		<form onsubmit="app.controllers.TodoController.addTodo(event)">
-			<input type="text" name="description" placeholder="New Todo">
-			<button type="submit">Add Todo</button>
-		</form>
+	<section>
+		<div id="weather" class="row-6">
+
+			<p>
+				<button>Your Weather<label>Fahrenheit</label>
+					<input id="inputFahrenheit" type="number" placeholder="Fahrenheit" oninput="temperatureConverter(this.value)"
+						onchange="temperatureConverter(this.value)">
+			</p>
+			<p>Celsius: <span id="outputCelsius"></span></p>
+			</button>
+	</section>
+
 	</div>
 
+
+
+	<footer>
+		<div class="text-center">
+			<div id="todo-error"></div>
+			<form onsubmit="app.controllers.TodoController.addTodo(event)">
+				<input type="text" name="description" placeholder="New Todo">
+				<button type="submit">Add Todo</button>
+				<div id="todos"></div>
+			</form>
+		</div>
+	</footer>
+
+	<script scr="www.brainyquote.com/link/quotebr.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 	<script type="module" src="app/main.js"></script>
 </body>
