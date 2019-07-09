@@ -10,11 +10,7 @@ export default class Todo {
 
     //TODO add a button to toggle the status of the todo (IE., if it's complete or not) dont forget to pass the id
     return `
-
     <div>
-    <h5>Todo: ${this.description}</h5>
-    <button class="btn btn-primary btn-sm" onclick="app.controllers.TodoController.removeTodo('${this._id}')" >Deleted</button >
-  <input type="checkbox-sm"/><label class="strikethrough">completed</label></button>
     </div>
       `
   }
