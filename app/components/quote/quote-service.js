@@ -1,4 +1,4 @@
-import quote from "../../models/quote.js"
+import Quote from "../../models/quote.js"
 
 // @ts-ignore
 const quoteApi = axios.create({
@@ -46,11 +46,20 @@ export default class QuoteService {
 			})
 			.catch(err => _setState('error', err))
 	}
+	getQuote() {
+		quoteApi.get()
+			.then(res => {
+				console.log(res.data.data)
+				_setState('quotes', res.data.data)
+			})
+			.catch(err => _setState('error', err))
+	}
+
 	addSubscriber(prop, fn) {
 		_subscribers[prop].push(fn)
 	}
 
-	getQuote() {
+	get Quote() {
 		return _state.quotes.map(q => new Quote(q))
 	}
 	get QuoteError() {
